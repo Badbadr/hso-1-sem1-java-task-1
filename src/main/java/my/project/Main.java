@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         DelegatingReader reader = new DelegatingReader();
         // TODO: проблема с доступом java к файлам системы на маке, пока только так
-        List<Employee> employeeList = reader.read("src/main/resources/java-test.csv");
+        List<Employee> employeeList = reader.read("src/main/resources/java-test.xlsx");
         TargetCalculator calculator = new TargetCalculator(employeeList);
         ConsoleWriter writer = new ConsoleWriter();
         writer.write(calculator);

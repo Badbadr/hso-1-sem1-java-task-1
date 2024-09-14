@@ -1,5 +1,6 @@
 package my.project.mapper;
 
+import my.project.util.GenericRow;
 import org.apache.commons.csv.CSVRecord;
 import org.apache.commons.lang3.StringUtils;
 
@@ -11,8 +12,10 @@ public class CompanyMapper extends FieldMapper {
         super(fieldToColumnMap);
     }
 
-    public boolean isCompany(CSVRecord data) {
-        return !StringUtils.isBlank(data.get(this.getFieldToColumnMap().get("company name")));
+    public boolean isCompany(GenericRow data) {
+        Integer companyColumnIndex = this.getFieldToColumnMap().get("company name");
+        String companyName = data.get(companyColumnIndex);
+        return !StringUtils.isBlank(companyName);
     }
 
 }

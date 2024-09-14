@@ -13,8 +13,9 @@ public class DelegatingReader {
         var format = lastPath[lastPath.length - 1];
 
         return switch (Objects.requireNonNull(MyReader.FileFormat.of(format))) {
-            case CSV -> new CsvReader(path);
-            case XLSX, XLS -> new ExcelReader(path);
+            case CSV -> new CsvReader(path, MyReader.FileFormat.CSV);
+            case XLSX -> new ExcelReader(path, MyReader.FileFormat.XLSX);
+            case XLS -> new ExcelReader(path, MyReader.FileFormat.XLS);
         };
     }
 

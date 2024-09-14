@@ -4,6 +4,7 @@ import lombok.Setter;
 import my.project.model.Company;
 import my.project.model.Employee;
 import my.project.model.Individual;
+import my.project.util.GenericRow;
 import org.apache.commons.csv.CSVRecord;
 
 import java.util.Map;
@@ -21,7 +22,7 @@ public class EmployeeMapper extends FieldMapper implements Mapper {
     }
 
     @Override
-    public Employee map(CSVRecord data) {
+    public Employee map(GenericRow data) {
         if (individualMapper != null && companyMapper != null && bankAccountMapper != null) {
             if (companyMapper.isCompany(data)) {
                 return new Company(

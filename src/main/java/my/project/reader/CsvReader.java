@@ -6,6 +6,7 @@ import my.project.mapper.CompanyMapper;
 import my.project.mapper.EmployeeMapper;
 import my.project.mapper.IndividualMapper;
 import my.project.model.Employee;
+import my.project.util.GenericRow;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.apache.commons.lang3.StringUtils;
@@ -31,8 +32,8 @@ class CsvReader extends MyReader {
     private CompanyMapper companyMapper;
     private IndividualMapper individualMapper;
 
-    CsvReader(String pathToFile) {
-        super(pathToFile);
+    CsvReader(String pathToFile, FileFormat format) {
+        super(pathToFile, format);
     }
 
     @Override
@@ -53,7 +54,7 @@ class CsvReader extends MyReader {
 
             List<Employee> employees = new ArrayList<>();
             while (iterator.hasNext()) {
-                var data = iterator.next();
+                var data = new GenericRow(iterator.next());
                 employees.add(employeeMapper.map(data));
             }
 
@@ -109,10 +110,5 @@ class CsvReader extends MyReader {
         }
 
         return groupToColumnsMap;
-    }
-
-    @Override
-    public Set<FileFormat> getSupportedFormats() {
-        return Set.of(FileFormat.CSV);
     }
 }

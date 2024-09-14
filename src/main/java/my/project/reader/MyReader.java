@@ -9,14 +9,14 @@ import java.util.Set;
 @Getter
 abstract class MyReader {
     private final String pathToFile;
+    private final FileFormat format;
 
-    MyReader(String pathToFile) {
+    MyReader(String pathToFile, FileFormat format) {
         this.pathToFile = pathToFile;
+        this.format = format;
     }
 
     abstract protected List<Employee> read();
-
-    abstract public Set<FileFormat> getSupportedFormats();
 
     public enum FileFormat {
         XLSX("xlsx"),

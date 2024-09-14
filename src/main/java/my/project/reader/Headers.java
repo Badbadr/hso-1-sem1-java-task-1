@@ -18,6 +18,6 @@ public enum Headers {
                 return f;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unknown header: " + headerName);
     }
 }
