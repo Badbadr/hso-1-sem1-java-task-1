@@ -1,7 +1,7 @@
 package my.project.writer;
 
 import lombok.NoArgsConstructor;
-import my.project.TargetCalculator;
+import my.project.util.TargetCalculator;
 
 @NoArgsConstructor
 public class ConsoleWriter implements Writer {

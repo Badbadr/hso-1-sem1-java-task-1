@@ -4,7 +4,8 @@ public enum Headers {
     EMPLOYEE("employee"),
     COMPANY("company"),
     INDIVIDUAL("individual"),
-    BANK_ACCOUNT("bank account");
+    BANK_ACCOUNT("bank account"),
+    PAYMENT("payment");
 
     private final String name;
 

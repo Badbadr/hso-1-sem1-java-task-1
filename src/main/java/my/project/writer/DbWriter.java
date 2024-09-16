@@ -1,6 +1,6 @@
 package my.project.writer;
 
-import my.project.TargetCalculator;
+import my.project.util.TargetCalculator;
 
 public class DbWriter implements Writer {
     @Override

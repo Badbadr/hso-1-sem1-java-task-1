@@ -1,8 +1,15 @@
 package my.project.util;
 
+import my.project.mapper.GeneralMapper;
+import my.project.reader.Headers;
 import org.apache.commons.csv.CSVRecord;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class GenericRow {
 
@@ -26,6 +33,9 @@ public class GenericRow {
             return csvSrc.get(index);
         } else {
             var cell = excelSrc.getCell(index);
+            if (cell == null) {
+                return null;
+            }
             return switch (cell.getCellType()) {
                 case NUMERIC -> String.valueOf((long) cell.getNumericCellValue());
                 case STRING -> cell.getStringCellValue();
@@ -34,6 +44,33 @@ public class GenericRow {
                 default -> throw new IllegalArgumentException("Unsupported column type: " + cell.getCellType());
             };
         }
+    }
+
+    public int size() {
+        return csvSrc != null? csvSrc.size(): Objects.requireNonNull(excelSrc).getLastCellNum();
+    }
+
+    public Map<Headers, HashMap<String, String>> getData(GeneralMapper mapper) {
+        Map<Headers, HashMap<String, String>> result = new HashMap<>();
+        for (Headers value : Headers.values()) {
+            result.put(value, new HashMap<>());
+        }
+
+        long cellsNum = csvSrc != null ? csvSrc.size(): Objects.requireNonNull(excelSrc).getLastCellNum();
+
+        for (int i = 0; i < cellsNum; i++) {
+            var entityType = mapper.getEntityForColumnIndex(i);
+            if (entityType != null && !StringUtils.isBlank(this.get(i))) {
+                result.get(entityType).put(mapper.getEntityColumnMapping(entityType).get(i), this.get(i));
+            }
+        }
+        for (var entry: result.entrySet()) {
+            if (!Headers.EMPLOYEE.equals(entry.getKey()) && !entry.getValue().isEmpty()) {
+                entry.getValue().put("__employee_id", result.get(Headers.EMPLOYEE).get("id"));
+            }
+        }
+
+        return result;
     }
 
     public boolean isEmpty() {

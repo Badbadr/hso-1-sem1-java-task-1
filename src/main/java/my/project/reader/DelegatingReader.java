@@ -1,7 +1,7 @@
 package my.project.reader;
 
-import my.project.model.Employee;
-
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,7 +19,7 @@ public class DelegatingReader {
         };
     }
 
-    public List<Employee> read(String path) {
+    public HashMap<Headers, List<HashMap<String, String>>> read(String path) throws IOException {
         return getReaderForFile(path).read();
     }
 }
