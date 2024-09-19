@@ -20,8 +20,8 @@ public class Main {
             HashMap<Headers, List<LinkedHashMap<String, String>>> entities = reader.read(
                     "src/main/resources/java-test.xlsx");
             BadDeserializer d = new BadDeserializer();
-            d.deserialize(entities);
-            TargetCalculator calculator = new TargetCalculator(entities);
+            List<Object> objects = d.deserialize(entities);
+            TargetCalculator calculator = new TargetCalculator(objects);
             ConsoleWriter writer = new ConsoleWriter();
             writer.write(calculator);
         } catch (IOException e) {
