@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 @Getter
@@ -24,8 +25,8 @@ public class ExcelReader extends MyReader {
     }
 
     @Override
-    protected HashMap<Headers, List<HashMap<String, String>>> read() throws IOException {
-        HashMap<Headers, List<HashMap<String, String>>> result = new HashMap<>();
+    protected HashMap<Headers, List<LinkedHashMap<String, String>>> read() throws IOException {
+        HashMap<Headers, List<LinkedHashMap<String, String>>> result = new HashMap<>();
         for (Headers value : Headers.values()) {
             result.put(value, new ArrayList<>());
         }

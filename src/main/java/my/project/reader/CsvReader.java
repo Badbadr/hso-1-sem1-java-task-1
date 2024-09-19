@@ -11,6 +11,7 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 @Getter
@@ -21,8 +22,8 @@ class CsvReader extends MyReader {
     }
 
     @Override
-    protected HashMap<Headers, List<HashMap<String, String>>> read() {
-        HashMap<Headers, List<HashMap<String, String>>> result = new HashMap<>();
+    protected HashMap<Headers, List<LinkedHashMap<String, String>>> read() {
+        LinkedHashMap<Headers, List<LinkedHashMap<String, String>>> result = new LinkedHashMap<>();
         for (Headers value : Headers.values()) {
             result.put(value, new ArrayList<>());
         }

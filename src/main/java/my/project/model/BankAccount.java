@@ -4,12 +4,22 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-@RequiredArgsConstructor
+import java.util.List;
+
 @Getter
-@Setter
 public class BankAccount implements Mappable{
 
     private final String iban;
     private final String bic;
     private final String accountHolder;
+
+    public BankAccount(String iban, String bic, String accountHolder) {
+        this.iban = iban;
+        this.bic = bic;
+        this.accountHolder = accountHolder;
+    }
+
+    public BankAccount(List<String> args) {
+        this(args.get(0), args.get(1), args.get(2));
+    }
 }

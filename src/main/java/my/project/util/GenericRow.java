@@ -8,6 +8,7 @@ import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -50,23 +51,18 @@ public class GenericRow {
         return csvSrc != null? csvSrc.size(): Objects.requireNonNull(excelSrc).getLastCellNum();
     }
 
-    public Map<Headers, HashMap<String, String>> getData(GeneralMapper mapper) {
-        Map<Headers, HashMap<String, String>> result = new HashMap<>();
+    public Map<Headers, LinkedHashMap<String, String>> getData(GeneralMapper mapper) {
+        Map<Headers, LinkedHashMap<String, String>> result = new HashMap<>();
         for (Headers value : Headers.values()) {
-            result.put(value, new HashMap<>());
+            result.put(value, new LinkedHashMap<>());
         }
 
         long cellsNum = csvSrc != null ? csvSrc.size(): Objects.requireNonNull(excelSrc).getLastCellNum();
 
         for (int i = 0; i < cellsNum; i++) {
             var entityType = mapper.getEntityForColumnIndex(i);
-            if (entityType != null && !StringUtils.isBlank(this.get(i))) {
+            if (entityType != null) {
                 result.get(entityType).put(mapper.getEntityColumnMapping(entityType).get(i), this.get(i));
-            }
-        }
-        for (var entry: result.entrySet()) {
-            if (!Headers.EMPLOYEE.equals(entry.getKey()) && !entry.getValue().isEmpty()) {
-                entry.getValue().put("__employee_id", result.get(Headers.EMPLOYEE).get("id"));
             }
         }
 

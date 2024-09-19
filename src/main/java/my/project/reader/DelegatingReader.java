@@ -2,6 +2,7 @@ package my.project.reader;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,7 +20,7 @@ public class DelegatingReader {
         };
     }
 
-    public HashMap<Headers, List<HashMap<String, String>>> read(String path) throws IOException {
+    public HashMap<Headers, List<LinkedHashMap<String, String>>> read(String path) throws IOException {
         return getReaderForFile(path).read();
     }
 }

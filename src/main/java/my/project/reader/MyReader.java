@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -28,7 +29,7 @@ abstract class MyReader {
         generalMapper = new GeneralMapper();
     }
 
-    abstract protected HashMap<Headers, List<HashMap<String, String>>> read() throws IOException;
+    abstract protected HashMap<Headers, List<LinkedHashMap<String, String>>> read() throws IOException;
 
     /**
      * Определяет связь свойства объекта с номером столбца в таблице, путем инициализации {@link GeneralMapper}

@@ -2,6 +2,8 @@ package my.project.model;
 
 import lombok.Getter;
 
+import java.util.List;
+
 @Getter
 public class Individual extends Employee {
 
@@ -10,12 +12,18 @@ public class Individual extends Employee {
     private final boolean haveKids;
     private final int age;
 
-    public Individual(long id, String email, String phone, String address, BankAccount bankAccount,
-                      String firstName, String lastName, boolean haveKids, int age) {
-        super(id, email, phone, address, bankAccount);
+    public Individual(String id, String email, String phone, String address, String bankAccountBin,
+                      String bankAccountBic, String bankAccountHolder, String firstName, String lastName,
+                      String haveKids, String age) {
+        super(id, email, phone, address, bankAccountBin, bankAccountBic, bankAccountHolder);
         this.firstName = firstName;
         this.lastName = lastName;
-        this.haveKids = haveKids;
-        this.age = age;
+        this.haveKids = Boolean.getBoolean(haveKids);
+        this.age = Integer.parseInt(age);
+    }
+
+    public Individual(List<String> args) {
+        this(args.get(0), args.get(1), args.get(2), args.get(3), args.get(4), args.get(5), args.get(6),
+                args.get(7), args.get(8), args.get(9), args.get(10));
     }
 }

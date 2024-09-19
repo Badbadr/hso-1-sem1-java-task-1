@@ -2,37 +2,24 @@ package my.project.model;
 
 import lombok.Getter;
 
+import java.util.List;
+
 @Getter
 public class Company extends Employee {
 
     private final String name;
-    private final CompanyType type;
+    private final String type;
 
-    public Company(long id, String email, String phone, String address, BankAccount bankAccount,
-                   String name, String type) {
-        super(id, email, phone, address, bankAccount);
+    public Company(String id, String email, String phone, String address, String bankAccountBin,
+                   String bankAccountBic, String bankAccountHolder, String name, String type) {
+        super(id, email, phone, address, bankAccountBin, bankAccountBic, bankAccountHolder);
         this.name = name;
-        this.type = CompanyType.of(type);
+        this.type = type;
     }
 
-    public enum CompanyType {
-        TYPE1("type1"),
-        TYPE2("type2");
-
-        private final String name;
-
-        CompanyType(String name) {
-            this.name = name;
-        }
-
-        public static CompanyType of(String stringFormat) {
-            for(CompanyType f : values()){
-                if (f.name.equals(stringFormat)){
-                    return f;
-                }
-            }
-            return null;
-        }
+    public Company(List<String> args) {
+        this(args.get(0), args.get(1), args.get(2), args.get(3), args.get(4), args.get(5), args.get(6),
+                args.get(7), args.get(8));
     }
 
 }
