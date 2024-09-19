@@ -7,22 +7,22 @@ import java.util.Map;
 
 public class GeneralMapper {
 
-    private final Map<Headers, Map<Integer, String>> mappers = new HashMap<>();
+    private final Map<Headers, Map<Integer, String>> entityToColumnIndexToFieldNameMap = new HashMap<>();
     private final Map<Integer, Headers> columnIndexToEntityMap = new HashMap<>();
 
     public GeneralMapper() {
         for (Headers entityType : Headers.values()) {
-            mappers.put(entityType, new HashMap<>());
+            entityToColumnIndexToFieldNameMap.put(entityType, new HashMap<>());
         }
     }
 
     public void addMapping(Headers entityType, Map<Integer, String> mapping) {
-        this.mappers.put(entityType, mapping);
+        this.entityToColumnIndexToFieldNameMap.put(entityType, mapping);
         mapping.forEach((key, value) -> columnIndexToEntityMap.put(key, entityType));
     }
 
     public Map<Integer, String> getEntityColumnMapping(Headers entityType) {
-        return mappers.get(entityType);
+        return entityToColumnIndexToFieldNameMap.get(entityType);
     }
 
     public Headers getEntityForColumnIndex(int index) {
