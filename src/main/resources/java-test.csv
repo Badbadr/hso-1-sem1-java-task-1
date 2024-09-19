@@ -1,0 +1,12 @@
+Employee,,,,,Individual,,,,,Company,,,Bank Account,,
+id,email,phone,address,,first name,last name,has children,age,,company name,type,,iban,bic,account holder
+1,renoddeinoiffi-9956@yopmail.com,457532,Boulevard du Jazz,,Illia,Beliaev,TRUE,30,,,,,LU810104349981799511,BCEELULL,Monsieur Muscles
+2,demmessopruffi-8024@yopmail.com,352 26 81 00 69,bd du rock,,Mark,Ermakov,TRUE,32,,,,,LU560108872561138279,BILLLULL,Monsieur Muscles
+3,veyiquaqueuppu-4426@yopmail.com,40 78 7893,bd du folk,,Misha,Kalinin,FALSE,35,,,,,LU150102529149386185,NLIFLUL2XXX,Monsieur Muscles
+4,kanneunatoiffe-8721@yopmail.com,81 23 32,bd du jazz,,Egor,Selivanov,FALSE,18,,,,,LU890104997836826452,BCEELULL,Monsieur Muscles
+5,peprussouddaja-5049@yopmail.com,5495493,bd du rock,,Sofia,Burova,FALSE,43,,,,,LU890104997836826482,BCEELULL,Monsieur Muscles
+6,juyeiburouddou-8553@yopmail.com,621123456,rue Principle,,,,,,,ABBA,SARS,,FR0917569000305763211642W85,AGRIFRPPXXX,Monsieur Muscles
+7,nuffeudoipila-7561@yopmail.com,621654321,rue de Luxembourg,,,,,,,BABBA,SARL,,LU890104997836826482,BCEELULL,Monsieur Muscles
+8,proinnivademma-5120@yopmail.com,621369258,rue Principale,,,,,,,BIBBA,SARS,,LU810104349981799511,BCEELULL,Monsieur Muscles
+9,quiquauquonnogru-9374@yopmail.com,621147852,rue de la Ville,,,,,,,LIPA,SARL,,LU560108872561138279,BILLLULL,Monsieur Muscles
+10,sibrivauzimme-4036@yopmail.com,621789456,rue du Village,,,,,,,SVEZA,SARS,,LU150102529149386185,NLIFLUL2XXX,Monsieur Muscles
